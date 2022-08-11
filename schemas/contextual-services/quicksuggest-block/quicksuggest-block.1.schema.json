@@ -3,7 +3,7 @@
   "mozPipelineMetadata": {
     "bq_dataset_family": "contextual_services",
     "bq_metadata_format": "structured",
-    "bq_table": "quicksuggest_impression_v1",
+    "bq_table": "quicksuggest_block_v1",
     "expiration_policy": {
       "delete_after_days": 30
     },
@@ -41,12 +41,16 @@
       "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
       "type": "object"
     },
+    "iab_category": {
+      "description": "The IAB category of the suggestion",
+      "enum": [
+        "5 - Education",
+        "22 - Shopping"
+      ],
+      "type": "string"
+    },
     "improve_suggest_experience_checked": {
       "description": "A boolean indicating whether the user has opted in to improving the Firefox Suggest experience",
-      "type": "boolean"
-    },
-    "is_clicked": {
-      "description": "Whether or not the user has clicked on this QuickSuggest link",
       "type": "boolean"
     },
     "locale": {
@@ -61,10 +65,6 @@
       ],
       "type": "string"
     },
-    "matched_keywords": {
-      "description": "The matched keywords when a QuickSuggest link is shown",
-      "type": "string"
-    },
     "position": {
       "description": "The placement of the QuickSuggest link (1-based)",
       "type": "integer"
@@ -73,12 +73,8 @@
       "description": "Firefox release channel",
       "type": "string"
     },
-    "reporting_url": {
-      "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
-      "type": "string"
-    },
     "request_id": {
-      "description": "The request identfier for every Merino API request made by Firefox",
+      "description": "The request identifier for every Merino API request made by Firefox",
       "type": "string"
     },
     "scenario": {
@@ -90,10 +86,6 @@
       ],
       "type": "string"
     },
-    "search_query": {
-      "description": "The user's typed-in search query in the AwesomeBar. Note that this ping is only sent when a QuickSuggest ad is shown for the current search query, so we don't have to limit its size here",
-      "type": "string"
-    },
     "version": {
       "description": "Firefox version",
       "type": "string"
@@ -102,9 +94,8 @@
   "required": [
     "context_id",
     "block_id",
-    "is_clicked",
     "version"
   ],
-  "title": "quicksuggest-impression",
+  "title": "quicksuggest-block",
   "type": "object"
 }

@@ -3,7 +3,7 @@
   "mozPipelineMetadata": {
     "bq_dataset_family": "activity_stream",
     "bq_metadata_format": "structured",
-    "bq_table": "impression_stats_v1",
+    "bq_table": "impression_stats_v2",
     "expiration_policy": {
       "delete_after_days": 180
     }
@@ -69,10 +69,6 @@
     "release_channel": {
       "type": "string"
     },
-    "shield_id": {
-      "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
-      "type": "string"
-    },
     "source": {
       "type": "string"
     },
@@ -80,7 +76,8 @@
       "items": {
         "properties": {
           "id": {
-            "type": "integer"
+            "description": "The 'tile_id' indicating which story the tile points to; this was previously an integer in the v1 schema",
+            "type": "string"
           },
           "pos": {
             "type": "integer"
