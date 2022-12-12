@@ -778,6 +778,13 @@
                     "null"
                   ]
                 },
+                "name": {
+                  "description": "The CPU name, e.g. 'Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz', or `null` on failure. Desktop only.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "speedMHz": {
                   "description": "Only available on Firefox desktop. The CPU clock speed in MHz.",
                   "type": [
@@ -1447,6 +1454,10 @@
               "description": "<string>, Comma-separated list of enabled experimental features from about:preferences#experimental.",
               "type": "string"
             },
+            "FontName": {
+              "description": "<string>, Set before attempting to load a font to help diagnose crashes during loading.",
+              "type": "string"
+            },
             "GPUProcessLaunchCount": {
               "description": "<integer>, Number of times the GPU process was launched.",
               "type": "string"
@@ -1565,6 +1576,10 @@
             },
             "User32BeforeBlocklist": {
               "description": "1, Windows-only, present only if user32.dll was loaded before the DLL blocklist has been initialized",
+              "type": "string"
+            },
+            "UtilityActorsName": {
+              "description": "<string>, Comma-separated list of IPC actors name running on this Utility process instance",
               "type": "string"
             },
             "UtilityProcessSandboxingKind": {
